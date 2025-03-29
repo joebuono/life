@@ -41,7 +41,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
     .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {} as TreeNodeData);
   
   const hasChildren = Object.keys(actualChildren).length > 0;
-  const isCustom = children.isCustom;
+  const isCustom = (children as any).isCustom;
 
   // Determine the category for color inheritance
   const category = parentCategory || label;
@@ -114,7 +114,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
             <TreeNode
               key={childLabel}
               label={childLabel}
-              children={childData}
+              children={childData as TreeNodeData}
               level={level + 1}
               onAddChild={onAddChild}
               onDeleteChild={onDeleteChild}
@@ -147,8 +147,9 @@ const LifeTree: React.FC = () => {
       // Helper function to recursively find and update the parent
       const updateNode = (node: TreeNodeData, targetLabel: string, newChild: string): boolean => {
         if (node[targetLabel] !== undefined) {
+          const parentNode = node[targetLabel];
           node[targetLabel] = {
-            ...node[targetLabel],
+            ...parentNode,
             [newChild]: { isCustom: true }
           };
           return true;
@@ -175,7 +176,8 @@ const LifeTree: React.FC = () => {
       
       // Helper function to recursively find and delete the child
       const deleteNode = (node: TreeNodeData, targetLabel: string): boolean => {
-        if (node[targetLabel]?.isCustom) {
+        const targetNode = node[targetLabel];
+        if (targetNode && targetNode.isCustom) {
           delete node[targetLabel];
           return true;
         }
@@ -211,7 +213,7 @@ const LifeTree: React.FC = () => {
           <TreeNode
             key={category}
             label={category}
-            children={subcategories}
+            children={subcategories as TreeNodeData}
             onAddChild={handleAddChild}
             onDeleteChild={handleDeleteChild}
           />
@@ -239,8 +241,10 @@ const LifeTree: React.FC = () => {
           )}
         </div>
         <div className="footer-buttons">
-          <button className="reset-button" onClick={handleReset}>Reset Structure</button>
-          <span className="version">v1.0.0</span>
+          <button className="reset-button" onClick={handleReset}>
+            Reset Structure
+          </button>
+          <span className="version">v0.0.1</span>
         </div>
       </div>
     </div>

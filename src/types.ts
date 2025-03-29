@@ -1,6 +1,8 @@
 export interface TreeNodeData {
-  isCustom?: boolean;
-  [key: string]: TreeNodeData | boolean | undefined;
+  [key: string]: {
+    isCustom?: boolean;
+    [key: string]: any;
+  };
 }
 
 export interface TreeNodeProps {
@@ -10,5 +12,5 @@ export interface TreeNodeProps {
   onAddChild: (parentLabel: string, newChildName: string) => void;
   onDeleteChild: (childLabel: string) => void;
   isSubcategory?: boolean;
-  parentCategory?: string;
+  parentCategory?: string | null;
 } 
