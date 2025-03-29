@@ -201,6 +201,8 @@ const LifeTree: React.FC = () => {
     }
   };
 
+  const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
+
   return (
     <div className="life-tree">
       <h1>Life</h1>
@@ -216,7 +218,30 @@ const LifeTree: React.FC = () => {
         ))}
       </div>
       <div className="footer">
-        <button className="reset-button" onClick={handleReset}>Reset Structure</button>
+        <div className="instructions-section">
+          <div 
+            className={`instructions-header ${isInstructionsOpen ? 'open' : ''}`}
+            onClick={() => setIsInstructionsOpen(!isInstructionsOpen)}
+          >
+            <span className="toggle-icon">{isInstructionsOpen ? '▼' : '▶'}</span>
+            Instructions
+          </div>
+          {isInstructionsOpen && (
+            <div className="instructions-content">
+              <p>Welcome to your Life Tree! Here's how to use it:</p>
+              <ul>
+                <li>Click on any category to expand/collapse its subcategories</li>
+                <li>Use the + button to add custom subcategories</li>
+                <li>Use the × button to remove custom subcategories</li>
+                <li>Use the Reset Structure button to restore the default categories</li>
+              </ul>
+            </div>
+          )}
+        </div>
+        <div className="footer-buttons">
+          <button className="reset-button" onClick={handleReset}>Reset Structure</button>
+          <span className="version">v1.0.0</span>
+        </div>
       </div>
     </div>
   );
