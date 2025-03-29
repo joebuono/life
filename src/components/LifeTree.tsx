@@ -207,7 +207,7 @@ const LifeTree: React.FC = () => {
 
   return (
     <div className="life-tree">
-      <h1>Life</h1>
+      <h1>SIGMA</h1>
       <div className="tree-container">
         {Object.entries(data).map(([category, subcategories]) => (
           <TreeNode
