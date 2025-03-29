@@ -357,4 +357,102 @@
   position: absolute;
   left: 0;
   color: #4CAF50;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .life-tree {
+    padding: 10px;
+  }
+
+  .life-tree h1 {
+    font-size: 2em;
+    margin: 0 0 15px 0;
+  }
+
+  .tree-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 20px;
+  }
+
+  .tree-node {
+    max-width: 100%;
+  }
+
+  .tree-children {
+    gap: 12px;
+    padding-top: 15px;
+  }
+
+  .tree-label {
+    padding: 16px 20px;
+    margin-bottom: 8px;
+  }
+
+  .add-button, .delete-button {
+    width: 32px;
+    height: 32px;
+    font-size: 1.4em;
+  }
+
+  .add-form {
+    padding: 15px;
+  }
+
+  .add-form input {
+    padding: 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .form-buttons button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+
+  .reset-button {
+    padding: 16px 32px;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .footer {
+    padding: 15px;
+  }
+
+  .footer-buttons {
+    gap: 15px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .life-tree h1 {
+    font-size: 1.8em;
+  }
+
+  .tree-label {
+    padding: 14px 18px;
+    font-size: 0.95em;
+  }
+
+  .add-button, .delete-button {
+    width: 28px;
+    height: 28px;
+    font-size: 1.3em;
+  }
+
+  .add-form input {
+    padding: 10px;
+  }
+
+  .form-buttons button {
+    padding: 8px 16px;
+  }
+
+  .reset-button {
+    padding: 14px 28px;
+    font-size: 1em;
+  }
 } 
